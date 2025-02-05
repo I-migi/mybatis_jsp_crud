@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dto.NewsResponse;
 import com.example.demo.dto.ProductRequest;
 import com.example.demo.dto.ProductResponse;
+import com.example.demo.service.NaverNewsCrawler;
 import com.example.demo.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,14 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 	
 	private final ProductService productService;
+	
+	private final NaverNewsCrawler naverNewsCrawler; 
+	
+	@GetMapping("/news")
+	@ResponseBody
+	public List<NewsResponse> getHotNews() {
+		return naverNewsCrawler.getMainNews();
+	}
 	
 	
 	

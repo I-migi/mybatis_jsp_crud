@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductResponse {
 	
+	@JsonProperty("productId")
+	private Long productId;
+	
 	@JsonProperty("productName")
 	private String productName;
 	
@@ -20,6 +23,7 @@ public class ProductResponse {
 	private Double productPrice;
 	
 	public ProductResponse(Product product) {
+		this.productId = product.getId();
 		this.productName  = product.getName();
 		this.productPrice = product.getPrice();
 	}
